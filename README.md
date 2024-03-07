@@ -1,0 +1,2 @@
+# Friendly registration page
+ 

@@ -1,0 +1,81 @@
+@import "variables";
+@import "mixins";
+//@import "button";
+
+$containers: (
+    '1': 10px 10px 0 $clr--theme, // auth
+    '2': 5px 5px 0 $clr--theme, // input personal info
+    '3': -5px -5px 0 $clr--theme, // set avatar and wallpaper
+    '4': -10px -10px 0 $clr--theme, // set settings
+);
+
+// loop generation of containers shadows
+@each $num, $shadow in $containers {
+    .welcome-container__#{$num} {
+        box-shadow: $shadow;
+    }
+}
+
+body {
+    position: relative;
+    background-color: transparentize($clr--theme, 0.9);
+}
+
+.welcome-container {
+
+    background: white;
+    width: 35%;
+    margin-bottom: 50px;
+
+    h1, p.info--auth {
+        text-align: center;
+    }
+
+    // position at screen
+    //position: absolute;
+    //right: 50%;
+    //top: 0;
+    transform: translateX(85%) translateY(3%);
+
+    @media only screen and (max-width: 768px) {
+        transform: none;
+        width: auto;
+        margin: 20px;
+    }
+
+    // auth container view
+    border: 1px solid $clr--theme;
+    padding: 20px 35px 20px 20px;
+    border-radius: 20px;
+
+    // short notify
+    p.info--auth {
+        margin-bottom: $indent--medium;
+    }
+
+    // create account form
+    form {
+        .field {
+            @include flx-column-dr; // column direction
+        }
+
+        input {
+            margin-bottom: $indent--small;
+        }
+
+        input:not(input[type='submit']):not(input[type='radio']),
+        .field-limited {
+            width: 100%;
+        }
+
+        //input[type='submit'] {
+        //    width: 20%;
+        //}
+
+        div.action--auth {
+            margin-top: $indent--medium;
+        }
+
+    }
+
+}

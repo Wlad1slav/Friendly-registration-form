@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="css/limited-input-field-styles.css">
+    <link rel="stylesheet" href="css/toggle-button.css">
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/radio-container.css">
+    <link rel="stylesheet" href="css/welcome-container.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- cropper.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js" integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.css" integrity="sha512-bs9fAcCAeaDfA4A+NiShWR886eClUcBtqhipoY5DM60Y1V3BbVQlabthUBal5bq8Z8nnxxiyb1wfGX2n76N1Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- emojionearea library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css" integrity="sha512-0Nyh7Nf4sn+T48aTb6VFkhJe0FzzcOlqqZMahy/rhZ8Ii5Q9ZXG/1CbunUuEbfgxqsQfWXjnErKZosDSHVKQhQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.js" integrity="sha512-aGWPnmdBhJ0leVHhQaRASgb0InV/Z2BWsscdj1Vwt29Oic91wECPixuXsWESpFfCcYPLfOlBZzN2nqQdMxlGTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+
+<form id="auth">
+
+    <!-- Registration -->
+    <div class="welcome-container welcome-container__1 show yo-yo-sideways">
+        <h1> Welcome to your Echo Chamber!</h1>
+        <p class="info--auth"> Before starting your personal blog, please create your account. </p>
+
+        <!--- EMAIL -->
+        <div class="field-limited">
+            <label for="email" class="req">Email</label>
+            <input type="email" name="email" id="email" placeholder="example@gmail.com"
+                   required min="0">
+            <p style="opacity: 0" class="characters-amount"></p>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="field-limited">
+            <label for="password" class="req">Password</label>
+            <input type="password" name="password" id="password" placeholder="********"
+                   required min="8" maxlength="255">
+            <p class="characters-amount"></p>
+        </div>
+
+
+        <!-- PASSWORD CONFIRMATION -->
+        <div class="field-limited">
+            <label for="password_confirmation" class="req">Password confirmation</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="********"
+                   required min="8" maxlength="255">
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="action--auth">
+            <a class="btn" onclick="switchContainer(2)">Create</a>
+        </div>
+
+    </div>
+
+
+    <!-- Input personal info -->
+    <div class="welcome-container welcome-container__2 hidden">
+        <h1> Personal information 🤫</h1>
+        <p class="info--auth"> Fill in the information about yourself that you consider important. </p>
+
+        <p class="ntf--success mb12">
+            Account successfully created.
+        </p>
+
+        <div class="field-limited field__100">
+            <label for="name" class="req">Name</label>
+            <input type="text" name="name" id="name" placeholder="Your Name"
+                   required max="30">
+            <p class="characters-amount"></p>
+        </div>
+
+        <p class="mt6" style="text-align: right; font-style: italic; font-weight: 600;">Other fields are not required!</p>
+
+        <div class="field-limited field__100">
+            <label for="theme">Blog theme</label>
+            <input type="text" name="theme" id="theme"
+                   placeholder="e.g., science, programming, politic..." max="50">
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="field-limited field__100">
+            <label for="birthday_date">Birthday date</label>
+
+            <input type="date" name="birthday_date" id="birthday_date"
+                   min="1907-05-04" max="2014-01-01">
+
+            <p class="characters-amount" style="opacity: 0">1</p>
+        </div>
+
+        <div class="field-limited field__100">
+            <label for="locate">Your location</label>
+            <input type="text" name="locate" id="locate"
+                   placeholder="e.g., United Kingdom, London" max="50">
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="field-limited field__100">
+            <label for="nationality">Nationality</label>
+            <input type="text" name="nationality" id="nationality"
+                   placeholder="e.g., American" max="20">
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="field-limited field__100">
+            <label for="alma_mater">Alma Mater</label>
+            <input type="text" name="alma_mater" id="alma_mater"
+                   placeholder="School, College, or University attended" max="100">
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="field-limited field__100">
+            <label for="job">Job</label>
+            <input type="text" name="job" id="job"
+                   placeholder="e.g., Software Engineer" max="100">
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="field-limited field__100">
+            <label for="political_views">Political views</label>
+            <input type="text" name="political_views" id="political_views" list="political_views_list"
+                   placeholder="Feel free to share your political perspective" max="100">
+
+            <datalist id="political_views_list">
+                <option value="Communist">Radical left</option>
+                <option value="Socialist">Left</option>
+                <option value="Anarchist">Left</option>
+                <option value="Social democrat">Left</option>
+                <option value="Green">Left</option>
+                <option value="Progressive">Left</option>
+                <option value="Feminist">Left</option>
+                <option value="Liberal">Left-centrism</option>
+                <option value="Centrist">Centrism</option>
+                <option value="Libertarian">Centrism</option>
+                <option value="Conservative">Right-centrism</option>
+                <option value="Traditionalist">Right</option>
+                <option value="Nationalist">Right</option>
+                <option value="Monarchist">Right</option>
+                <option value="Far-right">Radical right</option>
+            </datalist>
+
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="field controversial" data-warn="warning_orientation">
+            <label for="orientation">Sexual orientation</label>
+            <select name="orientation" id="orientation">
+                <option value="hetero"></option>
+                <option value="hetero">⚤ Hetero</option>
+                <option value="lesbian">⚢ Lesbian</option>
+                <option value="gay">⚣ Gay</option>
+                <option value="bisexual">Bisexual</option>
+                <option value="asexual">Asexual</option>
+
+                <!-- When selecting, a field for entering the orientation is added -->
+                <option value="another">Another</option>
+            </select>
+        </div>
+
+        <div class="field-limited no-display" id="another_orientation">
+            <input type="text" name="another-orientation" id="another_orientation_input"
+                   placeholder="Queer" max="255">
+            <p class="characters-amount"></p>
+        </div>
+
+        <p class="ntf--warning mt6 hidden" id="warning_orientation">
+            This information is displayed in your profile! If you do not want this, then leave the fields blank.
+        </p>
+
+        <p class="characters-amount" style="opacity: 0">1</p>
+
+        <!-- A script that adds a field to select sexual orientation -->
+        <script src="js/fields/another-sexual-orientation.js"></script>
+
+        <div class="field" data-warn="warning_gender">
+            <label for="gender">Gender pronouns</label>
+            <select name="gender" id="gender">
+                <option value="hetero"></option>
+                <option value="hetero">she/her</option>
+                <option value="lesbian">he/him</option>
+                <option value="gay">they/them</option>
+
+                <!-- When selecting, a field for entering the gender is added -->
+                <option value="another">⚧ Another</option>
+            </select>
+        </div>
+
+        <div class="field-limited no-display" id="another_gender">
+            <input type="text" name="another-gender" id="another_gender_input"
+                   max="255">
+            <p class="characters-amount"></p>
+        </div>
+
+        <p class="ntf--warning mt6 no-display" id="warning_gender">
+            This information is displayed in your profile! If you do not want this, then leave the fields blank.
+        </p>
+
+        <p class="characters-amount" style="opacity: 0">1</p>
+
+        <!-- A script that adds a field to select gender -->
+        <script src="js/fields/another-gender.js"></script>
+
+
+        <!-- When selecting orientation and gender, a warning appears that this information is optional
+        and that it will be displayed in the personal blog information, where it will be visible to
+        all users if the blog author chooses to enter it. -->
+
+        <div class="field-limited field__100">
+            <label for="desc">Blog description</label>
+            <textarea data-max="500" rows="10" name="desc" id="desc"></textarea>
+            <p class="characters-amount"></p>
+        </div>
+
+        <div class="action--auth">
+            <a class="btn" onclick="switchContainer(3)">Next</a>
+        </div>
+    </div>
+
+
+    <!-- Avatar, emoji status and wallpaper select -->
+    <div class="welcome-container welcome-container__3 hidden">
+        <h1> Only a couple of steps left! 😉</h1>
+
+        <div class="field field__100">
+            <h3 class="mb6 mt6">Your avatar</h3>
+            <label for="avatar" class="upload-photo mb6">
+                Upload
+                <input type="file" name="avatar" id="avatar" class="image-to-crop"
+                       accept="image/gif ,image/png, image/jpg, image/jpeg, image/webp">
+            </label>
+
+            <img src="" alt="" id="cropped_avatar">
+            <p>You can choose any image or gif. It will be displayed as your blog avatar and icon.</p>
+        </div>
+
+        <!-- script for crop avatar -->
+        <script src="js/fields/cropper-avatar.js"></script>
+
+        <div class="field field__100">
+            <h3 class="mb6 mt12">Blog wallpaper</h3>
+            <label for="wallpaper" class="upload-photo mb6">
+                Upload
+                <input type="file" name="wallpaper" id="wallpaper"
+                       placeholder="United Kingdom, London"
+                       accept="image/gif ,image/png, image/jpg, image/jpeg, image/webp">
+            </label>
+
+            <img src="" alt="" id="cropped_wallpaper">
+            <p>Recommended size 1920x640px</p>
+        </div>
+
+        <!-- script for crop wallpaper -->
+        <script src="js/fields/cropper-wallpaper.js"></script>
+
+        <div class="field-limited field__100 mt12">
+            <label for="emojiStatus">
+                <h3>Your emoji status</h3>
+                <input type="text" name="emojiStatus" id="emojiStatus">
+            </label>
+            <p style="opacity: 0" class="characters-amount"></p>
+        </div>
+
+        <script>
+            $("#emojiStatus").emojioneArea();
+        </script>
+
+
+        <div class="action--auth">
+            <a class="btn btn--transparent-bg" onclick="switchContainer(2)">Back</a>
+            <a class="btn" onclick="switchContainer(4)">Next</a>
+        </div>
+
+    </div>
+
+    <!-- Settings -->
+    <div class="welcome-container welcome-container__4 hidden">
+        <h1> The last step! ⚙️ </h1>
+        <p class="info--auth"> Just set the settings for your blog. </p>
+
+        <section class="radio-container mb48">
+            <div>
+                <input type="radio" id="control_01" name="select" value="1" checked>
+                <label for="control_01">
+                    <h2>Pluralism Mode</h2>
+                    <p>Enable Pluralism Mode to diversify the perspectives and voices presented in your blog.</p>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_02" name="select" value="2">
+                <label for="control_02">
+                    <h2>Echo Chamber</h2>
+                    <p>When activated, this mode amplifies your selected viewpoints, creating a more uniform perspective across your posts.</p>
+                </label>
+            </div>
+        </section>
+
+        <div class="mb24">
+            <h2>Views</h2>
+
+            <div class="toggle-radio">
+                <p>Saving user views</p>
+                <input type="radio" name="views_save" id="yes_views_save" class="yes" checked="">
+                <input type="radio" name="views_save" id="no_views_save" class="no">
+                <div class="switch">
+                    <label for="yes_views_save" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_views_save" class="no">No</label>
+                </div>
+            </div>
+
+            <div class="toggle-radio">
+                <p>Show the number of views</p>
+                <input type="radio" name="views_show" id="yes_views_show" class="yes" checked="">
+                <input type="radio" name="views_show" id="no_views_show" class="no">
+                <div class="switch">
+                    <label for="yes_views_show" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_views_show" class="no">No</label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb24">
+            <h2>Likes</h2>
+            <div class="toggle-radio">
+                <p>Allow visitors to like</p>
+                <input type="radio" name="likes_add" id="yes_likes_add" class="yes" checked="">
+                <input type="radio" name="likes_add" id="no_likes_add" class="no">
+                <div class="switch">
+                    <label for="yes_likes_add" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_likes_add" class="no">No</label>
+                </div>
+            </div>
+
+            <div class="toggle-radio">
+                <p>Show the number of likes</p>
+                <input type="radio" name="likes_show" id="yes_likes_show" class="yes" checked="">
+                <input type="radio" name="likes_show" id="no_likes_show" class="no">
+                <div class="switch">
+                    <label for="yes_likes_show" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_likes_show" class="no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb24">
+            <h2>Dislikes</h2>
+            <div class="toggle-radio">
+                <p>Allow visitors to dislike</p>
+                <input type="radio" name="dislikes_add" id="yes_dislikes_add" class="yes" checked="">
+                <input type="radio" name="dislikes_add" id="no_dislikes_add" class="no">
+                <div class="switch">
+                    <label for="yes_dislikes_add" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_dislikes_add" class="no">No</label>
+                </div>
+            </div>
+
+            <div class="toggle-radio">
+                <p>Show the number of dislikes</p>
+                <input type="radio" name="dislikes_show" id="yes_dislikes_show" class="yes" checked="">
+                <input type="radio" name="dislikes_show" id="no_dislikes_show" class="no">
+                <div class="switch">
+                    <label for="yes_dislikes_show" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_dislikes_show" class="no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb24">
+            <h2>Comments</h2>
+            <div class="toggle-radio">
+                <p>Allow visitors to leave comments</p>
+                <input type="radio" name="comments_add" id="yes_comments_add" class="yes" checked="">
+                <input type="radio" name="comments_add" id="no_comments_add" class="no">
+                <div class="switch">
+                    <label for="yes_comments_add" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_comments_add" class="no">No</label>
+                </div>
+            </div>
+
+            <div class="toggle-radio">
+                <p>Show comments</p>
+                <input type="radio" name="comments_show" id="yes_comments_show" class="yes" checked="">
+                <input type="radio" name="comments_show" id="no_comments_show" class="no">
+                <div class="switch">
+                    <label for="yes_comments_show" class="yes">Yes</label>
+                    <span></span>
+                    <label for="no_comments_show" class="no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="action--auth">
+            <a class="btn btn--transparent-bg" onclick="switchContainer(3)">Back</a>
+            <input class="btn" type="submit" value="Complete">
+        </div>
+
+    </div>
+
+</form>
+
+<script src="/js/limited-input-field-scripts.js"></script>
+<script src="/js/controversial-control.js"></script>
+<script src="/js/welcome-page.js"></script>
+
+</body>
+
+</html>

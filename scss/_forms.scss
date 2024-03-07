@@ -1,0 +1,29 @@
+@import 'mixins';
+@import "variables";
+
+select {
+    width: 50% !important;
+}
+
+textarea {
+    resize: none;
+}
+
+// input type file customize
+.upload-photo {
+    // at button.scss the rest
+    cursor: pointer;
+}
+
+.upload-photo input {
+    // hides the standard HTML button for loading the file
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+img {
+    // for the image to be cropped
+    display: block;
+    max-width: 100%;
+}

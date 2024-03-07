@@ -1,0 +1,24 @@
+@import "variables";
+
+@mixin notification($color) {
+    background-color: $color;
+    color: darken($color, 30%);
+    border: $ntf-border darken($color, 20%);
+    border-radius: $ntf-radius;
+    padding: 5px 10px;
+    width: 98%;
+    transition: display 0.5s ease;
+    text-align: center;
+}
+
+.ntf--warning {
+    @include notification(lighten($clr--yellow, 6%));
+}
+
+.ntf--error {
+    @include notification($clr--red);
+}
+
+.ntf--success {
+    @include notification(lighten($clr--accent, 10%));
+}

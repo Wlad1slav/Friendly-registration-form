@@ -1,0 +1,27 @@
+// COLORS
+$clr--theme: rgb(50,100,255);
+$clr--accent: rgb(100, 210, 50);
+$clr--red: #ff0000;
+$clr--yellow: #fafa00;
+
+// typography
+$clr--text: rgb(30,30,30); // standard text color
+$clr--link: $clr--theme;
+
+// INDENTS
+$indent--small: 6px;
+$indent--medium: 20px;
+$indent--large: 50px;
+
+// BUTTONS
+$btn-background: $clr--accent;
+$btn-background--hover: lighten($clr--accent, 5%);
+$btn-background--focus: darken($clr--accent, 5%);
+$btn-color: white;
+$btn-padding: 5px 10px;
+$btn-radius: 5px;
+$btn-weight: 600;
+
+// NOTIFICATIONS
+$ntf-radius: 5px;
+$ntf-border: 2px solid;

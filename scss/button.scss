@@ -1,0 +1,52 @@
+@import "variables";
+
+@mixin btn-layout($background, $color, $border-color) {
+    padding: $btn-padding;
+    background-color: $background;
+    color: $color;
+    border-radius: $btn-radius;
+    font-weight: $btn-weight;
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+    border: 2px solid $border-color; // important, for buttons with transparent backgrounds
+    font-size: 16px;
+}
+
+// standard buttons
+
+.btn {
+    @include btn-layout($btn-background, $btn-color, $btn-background);
+}
+
+.btn:hover {
+    background-color: $btn-background--hover;
+}
+
+.btn:focus {
+    background-color: $btn-background--focus;
+}
+
+// none-important button with transparent background
+
+.btn--transparent-bg {
+    @include btn-layout(white, $clr--accent, $clr--accent);
+}
+
+.btn--transparent-bg:hover {
+    background-color: transparentize($clr--accent, 0.9);
+}
+
+.btn--transparent-bg:focus {
+    background-color: transparentize($clr--accent, 0.7);
+}
+
+// input type file button customize
+.upload-photo {
+    @include btn-layout(white, $clr--theme, $clr--theme);
+    width: 150px;
+    text-align: center;
+}
+
+.upload-photo:hover {
+    background-color: darken(white, 5%);
+}

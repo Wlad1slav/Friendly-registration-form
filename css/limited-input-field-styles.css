@@ -1,0 +1,82 @@
+/* https://github.com/Wlad1slav/Limited-input-field */
+
+.field-limited {
+  /*width: 200px;*/
+}
+.field-limited input:not(input[type=submit]):not(input[type=radio]),
+.field-limited textarea, select, .emojionearea-editor {
+  border-radius: 5px !important;
+  padding: 5px !important;
+  border: 1px solid rgb(50,100,255);
+  width: 100%;
+  box-shadow: none !important;
+  position: unset !important;
+}
+.emojionearea {
+  border: 1px solid rgb(50,100,255) !important;
+  transition: none !important;
+}
+.emojionearea.focused {
+  /*border: none !important;*/
+  box-shadow: 0 0 4px rgba(50,100,255, 0.5) !important;
+  outline: 1px solid rgb(50,100,255) !important;
+  transition: none !important;
+  height: auto !important;
+}
+.field-limited input:not(input[type=submit]):not(input[type=radio]):focus,
+.field-limited textarea:focus, select:focus .emojionearea-editor:focus {
+  box-shadow: 0 0 4px rgba(50,100,255, 0.5) !important;
+  outline: 1px solid rgb(50,100,255) !important;
+}
+.field-limited p.characters-amount {
+  margin: 0;
+  text-align: right;
+  font-size: 13px;
+  color: rgba(20, 20, 20, 0.6);
+}
+.field-limited input:not(input[type=submit]):not(input[type=radio]).error,
+.field-limited textarea.error {
+  border: 1px solid #c42424;
+  color: rgba(196, 36, 36, 0.6);
+}
+.field-limited input:not(input[type=submit]):not(input[type=radio]).error:focus,
+.field-limited textarea.error:focus {
+  outline: 1px solid #c42424 !important;
+  box-shadow: 0 0 4px rgba(196, 36, 36, 0.5) !important;
+}
+.field-limited p.characters-amount.error {
+  color: rgba(196, 36, 36, 0.6);
+}
+.field-limited input:not(input[type=submit]):not(input[type=radio]).warning,
+.field-limited textarea.warning {
+  border: 1px solid #de8254;
+  color: rgba(222, 130, 84, 0.9);
+}
+.field-limited input:not(input[type=submit]):not(input[type=radio]).warning:focus,
+.field-limited textarea.warning:focus {
+  outline: 1px solid #de8254 !important;
+  box-shadow: 0 0 4px rgba(222, 130, 84, 0.5) !important;
+}
+.field-limited p.characters-amount.warning {
+  color: rgba(222, 130, 84, 0.6);
+}
+
+.field__small {
+  width: 100px;
+}
+
+.field__medium {
+  width: 200px;
+}
+
+.field__large {
+  width: 400px;
+}
+
+.field__50 {
+  width: 50%;
+}
+
+.field__100 {
+  width: 100%;
+}

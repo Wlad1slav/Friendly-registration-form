@@ -1,0 +1,92 @@
+@import "variables";
+
+* {
+    margin: 0;
+}
+
+body {
+    //height: 100hsv;
+    position: relative;
+}
+
+// required
+.req::after {
+    content: '*';
+    color: $clr--red;
+}
+
+// content, which may be controversial, which may offend someone
+.controversial {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.controversial--view {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.no-display {
+    display: none;
+}
+
+@keyframes yo-yo {
+    0% { margin-top: -5px; }
+    50% { margin-top: 15px; }
+    //100% { margin-top: 0 }
+}
+
+@keyframes yo-yo-sideways {
+    0% { transform: translateX(75%) translateY(2%); }
+    50% { transform: translateX(95%) translateY(2%); }
+    100% { transform: translateX(85%) translateY(2%); }
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.show {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.1s linear !important;
+    animation: yo-yo 0.2s alternate;
+}
+
+.show.yo-yo-sideways {
+    animation: yo-yo-sideways 0.2s alternate !important;
+}
+
+.field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+// margins
+.mt6 {
+    margin-top: 6px;
+} .mb6 {
+    margin-bottom: 6px;
+}
+
+.mt12 {
+    margin-top: 12px;
+}.mb12 {
+    margin-bottom: 12px;
+}
+
+.mt24 {
+    margin-top: 24px;
+}.mb24 {
+     margin-bottom: 24px;
+ }
+
+.mt48 {
+    margin-top: 48px;
+}.mb48 {
+     margin-bottom: 48px;
+ }
